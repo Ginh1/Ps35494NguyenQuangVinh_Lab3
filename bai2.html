@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function hiencuuchuong(n){
+                str = "<div>";
+                for(i = 1; i <= 10; i++){
+                    "Bảng cửu chương " + n;
+                    str += " " + n + " x " + i + "= " + n*i +"<br>";
+                }
+                str += "</div>"
+                return str;
+            }
+    </script>
+</head>
+<body>
+    <style>
+        .container{
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 15px;
+            text-align: center;
+        }
+        .grid-item{
+            background-color: blanchedalmond;
+            border-radius: 10px;
+            padding: 10px 0;
+        }
+        
+        
+    </style>
+    <div class="container">
+        <div class="grid-item">
+            <h3 id="title-bangnhan1"></h3>
+            <div id="bangnhan1"></div>
+        </div>
+        <div class="grid-item">
+            <h3 id="title-bangnhan2"></h3>
+            <div id="bangnhan2"></div>
+        </div>
+        <div class="grid-item">
+            <h3 id="title-bangnhan3"></h3>
+            <div id="bangnhan3"></div>
+        </div>
+        <div class="grid-item">
+            <h3 id="title-bangnhan4"></h3>
+            <div id="bangnhan4"></div>
+        </div>
+        <div class="grid-item">
+            <h3 id="title-bangnhan5"></h3>
+            <div id="bangnhan5"></div>
+        </div>
+        <div class="grid-item">
+            <h3 id="title-bangnhan6"></h3>
+            <div id="bangnhan6"></div>
+        </div>
+        <div class="grid-item">
+            <h3 id="title-bangnhan7"></h3>
+            <div id="bangnhan7"></div>
+        </div>
+        <div class="grid-item">
+            <h3 id="title-bangnhan8"></h3>
+            <div id="bangnhan8"></div>
+        </div>
+        <div class="grid-item">
+            <h3 id="title-bangnhan9"></h3>
+            <div id="bangnhan9"></div>
+        </div>
+        <main id="cuuchuong">
+            <script>
+                for(n=1; n<=9; n++){
+                    var title = "Bảng cửu chương " + n;
+                    document.getElementById('title-bangnhan' +n).innerHTML = title;
+                    let s = hiencuuchuong(n);
+                    document.getElementById('bangnhan' + n).innerHTML = s;
+                }
+            </script>
+        </main>
+    </div>
+</body>
+</html>

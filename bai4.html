@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Họ Tên: [Họ tên của bạn] - Mã Sinh Viên: [Mã sinh viên của bạn]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chọn Ngày, Tháng, Năm Sinh</h1>
+    <div class="container">
+        <label for="day">Ngày:</label>
+        <select id="day" name="day">
+        </select>
+
+        <label for="month">Tháng:</label>
+        <select id="month" name="month" onclick="updateDayOptions()">
+        </select>
+
+        <label for="year">Năm:</label>
+        <select id="year" name="year">
+        </select>
+    </div>
+    <script>
+        var daySelect = document.getElementById("day");
+        for (var i = 1; i <= 31; i++) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.text = i;
+            daySelect.appendChild(option);
+        }
+
+        var i = 1;
+        var monthSelect = document.getElementById("month");
+        while (i <= 12) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.text = i;
+            monthSelect.appendChild(option);
+            i++;
+        }
+
+        var i = 2003;
+        var yearSelect = document.getElementById("year");
+        do {
+            var option = document.createElement("option");
+            option.value = i;
+            option.text = i;
+            yearSelect.appendChild(option);
+            i++;
+        } while (i <= 2023);
+        
+        function updateDayOptions() {
+            var monthSelect = document.getElementById("month");
+            var daySelect = document.getElementById("day");
+            
+            // Xóa tất cả các tùy chọn ngày hiện tại
+            daySelect.innerHTML = "";
+
+            var selectedMonth = parseInt(monthSelect.value);
+            var maxDay = 31; // Theo mặc định, một số tháng có 31 ngày
+
+            // Các tháng có 30 ngày
+            if (selectedMonth == 4 || selectedMonth == 6 || selectedMonth == 9 || selectedMonth == 11) {
+                maxDay = 30;
+            }
+            // Tháng 2 (cần kiểm tra năm nhuận)
+            else if (selectedMonth == 2) {
+                var year = yearSelect; // Lấy năm hiện tại
+                if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+                    // Nếu năm hiện tại là năm nhuận
+                    maxDay = 29;
+                } else {
+                    // Nếu không phải năm nhuận
+                    maxDay = 28;
+                }
+            }
+
+            // Tạo các tùy chọn ngày dựa trên số ngày tối đa
+            for (var i = 1; i <= maxDay; i++) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.text = i;
+                daySelect.appendChild(option);
+            }
+        }
+    </script>
+</body>
+</html>
